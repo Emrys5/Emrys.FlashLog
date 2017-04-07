@@ -10,9 +10,12 @@ FlashLogger.Instanse().Register();
 
 ### 2、写日志
 ```
-FlashLog.Debug("日志内容");
+FlashLogger.Debug("日志内容");
 ```
 ## 备注
 #### 1、基于log4net
-
+目前写日志基于log4net，也可以扩展使用其他的组件
 https://github.com/apache/log4net
+
+#### 2、流程
+由于日志的耗时全部是IO上，所以现在是把日志放到队列中，然后让一个线程从队列中获取日志。
