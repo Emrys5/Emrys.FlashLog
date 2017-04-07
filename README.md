@@ -3,7 +3,7 @@
 
 ## Start
 ### 1、在程序开始注册FlashLog
-
+如在MVC中，在Global中的Application_Start注册FlashLog即可。
 ```
 FlashLogger.Instanse().Register();
 ```
