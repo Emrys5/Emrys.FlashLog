@@ -14,3 +14,5 @@ FlashLog.Debug("日志内容");
 ```
 ## 备注
 #### 1、基于log4net
+
+https://github.com/apache/log4net
