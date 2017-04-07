@@ -7,3 +7,8 @@
 ```
 FlashLogger.Instanse().Register();
 ```
+
+## 2、写日志
+```
+FlashLog.Debug("日志内容");
+```
