@@ -16,31 +16,32 @@ namespace Emrys.FlashLog
         /// <summary>
         /// 记录消息Queue
         /// </summary>
-        private ConcurrentQueue<FlashLogMessage> _que = new ConcurrentQueue<FlashLogMessage>();
+        private ConcurrentQueue<FlashLogMessage> _que;
 
         /// <summary>
         /// 信号
         /// </summary>
-        private ManualResetEvent _mre = new ManualResetEvent(false);
+        private ManualResetEvent _mre;
 
         /// <summary>
         /// 日志
         /// </summary>
-        private ILog _log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private ILog _log;
 
         /// <summary>
         /// 日志
         /// </summary>
-        private static FlashLogger _flashLog;
+        private static FlashLogger _flashLog = new FlashLogger();
+         
 
-        /// <summary>
-        /// 第一次运行初始化配置
-        /// </summary>
-        static FlashLogger()
+        private FlashLogger()
         {
             // 设置日志配置文件路径
             XmlConfigurator.Configure(new FileInfo(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "log4net.config")));
-            _flashLog = new FlashLogger();
+
+            _que = new ConcurrentQueue<FlashLogMessage>();
+            _mre = new ManualResetEvent(false);
+            _log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         }
 
         /// <summary>
@@ -155,9 +156,9 @@ namespace Emrys.FlashLog
 
     }
 
-    
-  
 
 
-   
+
+
+
 }

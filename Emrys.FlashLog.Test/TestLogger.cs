@@ -12,6 +12,11 @@ namespace Emrys.FlashLog.Test
             FlashLogger.Instanse().Register();
 
             FlashLogger.Debug("TestWriteLog");
+            FlashLogger.Debug("TestWriteLog1");
+            FlashLogger.Debug("TestWriteLog2");
+            FlashLogger.Debug("TestWriteLog3");
+            FlashLogger.Debug("TestWriteLog4");
+            FlashLogger.Debug("TestWriteLog5");
         }
     }
 }
