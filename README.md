@@ -17,7 +17,7 @@ FlashLogger.Info("日志内容",new Exception("TEST"));
 ## 备注
 #### 1、基于log4net
 目前写日志基于log4net，也可以扩展使用其他的组件
-https://github.com/apache/log4net
+[log4net](https://github.com/apache/log4net)
 
 #### 2、流程
 由于日志的耗时全部是IO上，所以现在是把日志放到队列中，然后让一个线程从队列中获取日志。这个导致的问题就是如果程序突然断电或者程序崩溃了，那么在队列中的还没有写到磁盘上的日志将丢失。
