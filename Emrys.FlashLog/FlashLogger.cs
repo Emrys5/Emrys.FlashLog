@@ -48,7 +48,7 @@ namespace Emrys.FlashLog
         /// 实现单例
         /// </summary>
         /// <returns></returns>
-        public static FlashLogger Instanse()
+        public static FlashLogger Instance()
         {
             return _flashLog;
         }
@@ -131,27 +131,27 @@ namespace Emrys.FlashLog
 
         public static void Debug(string msg, Exception ex = null)
         {
-            Instanse().EnqueueMessage(msg, FlashLogLevel.Debug, ex);
+            Instance().EnqueueMessage(msg, FlashLogLevel.Debug, ex);
         }
 
         public static void Error(string msg, Exception ex = null)
         {
-            Instanse().EnqueueMessage(msg, FlashLogLevel.Error, ex);
+            Instance().EnqueueMessage(msg, FlashLogLevel.Error, ex);
         }
 
         public static void Fatal(string msg, Exception ex = null)
         {
-            Instanse().EnqueueMessage(msg, FlashLogLevel.Fatal, ex);
+            Instance().EnqueueMessage(msg, FlashLogLevel.Fatal, ex);
         }
 
         public static void Info(string msg, Exception ex = null)
         {
-            Instanse().EnqueueMessage(msg, FlashLogLevel.Info, ex);
+            Instance().EnqueueMessage(msg, FlashLogLevel.Info, ex);
         }
 
         public static void Warn(string msg, Exception ex = null)
         {
-            Instanse().EnqueueMessage(msg, FlashLogLevel.Warn, ex);
+            Instance().EnqueueMessage(msg, FlashLogLevel.Warn, ex);
         }
 
     }

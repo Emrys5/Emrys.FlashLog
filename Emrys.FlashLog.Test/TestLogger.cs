@@ -9,7 +9,7 @@ namespace Emrys.FlashLog.Test
         [TestMethod]
         public void TestWriteLog()
         {
-            FlashLogger.Instanse().Register();
+            FlashLogger.Instance().Register();
 
             FlashLogger.Debug("TestWriteLog");
             FlashLogger.Debug("TestWriteLog1");
