@@ -10,9 +10,12 @@ FlashLogger.Instanse().Register();
 
 ### 2、写日志
 ```
-FlashLogger.Debug("日志内容");
-FlashLogger.Info("日志内容");
-FlashLogger.Info("日志内容",new Exception("TEST"));
+  FlashLogger.Debug("Debug");
+  FlashLogger.Debug("Debug", new Exception("testexception"));
+  FlashLogger.Info("Info");
+  FlashLogger.Fatal("Fatal");
+  FlashLogger.Error("Error");
+  FlashLogger.Warn("Warn", new Exception("testexception"));
 ```
 ## 备注
 #### 1、基于log4net
