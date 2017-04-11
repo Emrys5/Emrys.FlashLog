@@ -17,6 +17,7 @@ namespace Emrys.FlashLog.Test
             FlashLogger.Debug("TestWriteLog3");
             FlashLogger.Debug("TestWriteLog4");
             FlashLogger.Debug("TestWriteLog5");
+
         }
     }
 }

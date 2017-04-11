@@ -32,7 +32,7 @@ namespace Emrys.FlashLog
         /// 日志
         /// </summary>
         private static FlashLogger _flashLog = new FlashLogger();
-         
+
 
         private FlashLogger()
         {
@@ -122,7 +122,7 @@ namespace Emrys.FlashLog
              || (level == FlashLogLevel.Info && _log.IsInfoEnabled)
              || (level == FlashLogLevel.Warn && _log.IsWarnEnabled))
             {
-                _que.Enqueue(new FlashLogMessage { Message = message, Level = level, Exception = ex });
+                _que.Enqueue(new FlashLogMessage { Message = "[" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss,fff") + "]\r\n" + message, Level = level, Exception = ex });
 
                 // 通知线程往磁盘中写日志
                 _mre.Set();
