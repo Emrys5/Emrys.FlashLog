@@ -11,22 +11,22 @@ using System.Threading.Tasks;
 
 namespace Emrys.FlashLog
 {
-    public class FlashLogger
+    public sealed class FlashLogger
     {
         /// <summary>
         /// 记录消息Queue
         /// </summary>
-        private ConcurrentQueue<FlashLogMessage> _que;
+        private readonly ConcurrentQueue<FlashLogMessage> _que;
 
         /// <summary>
         /// 信号
         /// </summary>
-        private ManualResetEvent _mre;
+        private readonly ManualResetEvent _mre;
 
         /// <summary>
         /// 日志
         /// </summary>
-        private ILog _log;
+        private readonly ILog _log;
 
         /// <summary>
         /// 日志
@@ -122,7 +122,12 @@ namespace Emrys.FlashLog
              || (level == FlashLogLevel.Info && _log.IsInfoEnabled)
              || (level == FlashLogLevel.Warn && _log.IsWarnEnabled))
             {
-                _que.Enqueue(new FlashLogMessage { Message = "[" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss,fff") + "]\r\n" + message, Level = level, Exception = ex });
+                _que.Enqueue(new FlashLogMessage
+                {
+                    Message = "[" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss,fff") + "]\r\n" + message,
+                    Level = level,
+                    Exception = ex
+                });
 
                 // 通知线程往磁盘中写日志
                 _mre.Set();
