@@ -11,12 +11,12 @@ namespace Emrys.FlashLog.Test
         {
             FlashLogger.Instance().Register();
 
-            FlashLogger.Debug("TestWriteLog");
-            FlashLogger.Debug("TestWriteLog1");
-            FlashLogger.Debug("TestWriteLog2");
-            FlashLogger.Debug("TestWriteLog3");
-            FlashLogger.Debug("TestWriteLog4");
-            FlashLogger.Debug("TestWriteLog5");
+            FlashLogger.Debug("Debug");
+            FlashLogger.Debug("Debug", new Exception("testexception"));
+            FlashLogger.Info("Info");
+            FlashLogger.Fatal("Fatal");
+            FlashLogger.Error("Error");
+            FlashLogger.Warn("Warn", new Exception("testexception"));
 
         }
     }
