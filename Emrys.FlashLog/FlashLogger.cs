@@ -73,32 +73,28 @@ namespace Emrys.FlashLog
                 // 等待信号通知
                 _mre.WaitOne();
 
-                // 判断是否有内容需要如磁盘
-                while (_que.Count > 0)
+                FlashLogMessage msg;
+                // 判断是否有内容需要如磁盘 从列队中获取内容，并删除列队中的内容
+                while (_que.Count > 0 && _que.TryDequeue(out msg))
                 {
-                    FlashLogMessage msg;
-                    if (_que.TryDequeue(out msg)) // 从列队中获取内容，并删除列队中的内容
+                    // 判断日志等级，然后写日志
+                    switch (msg.Level)
                     {
-                        // 判断日志等级，然后写日志
-                        switch (msg.Level)
-                        {
-                            case FlashLogLevel.Debug:
-                                _log.Debug(msg.Message, msg.Exception);
-                                break;
-                            case FlashLogLevel.Info:
-                                _log.Info(msg.Message, msg.Exception);
-                                break;
-                            case FlashLogLevel.Error:
-                                _log.Error(msg.Message, msg.Exception);
-                                break;
-                            case FlashLogLevel.Warn:
-                                _log.Warn(msg.Message, msg.Exception);
-                                break;
-                            case FlashLogLevel.Fatal:
-                                _log.Fatal(msg.Message, msg.Exception);
-                                break;
-                        }
-
+                        case FlashLogLevel.Debug:
+                            _log.Debug(msg.Message, msg.Exception);
+                            break;
+                        case FlashLogLevel.Info:
+                            _log.Info(msg.Message, msg.Exception);
+                            break;
+                        case FlashLogLevel.Error:
+                            _log.Error(msg.Message, msg.Exception);
+                            break;
+                        case FlashLogLevel.Warn:
+                            _log.Warn(msg.Message, msg.Exception);
+                            break;
+                        case FlashLogLevel.Fatal:
+                            _log.Fatal(msg.Message, msg.Exception);
+                            break;
                     }
                 }
 
