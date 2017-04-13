@@ -106,6 +106,7 @@ namespace Emrys.FlashLog
 
                 // 重新设置信号
                 _mre.Reset();
+                Thread.Sleep(1);
             }
         }
 
