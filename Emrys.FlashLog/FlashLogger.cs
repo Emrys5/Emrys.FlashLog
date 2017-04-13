@@ -36,8 +36,14 @@ namespace Emrys.FlashLog
 
         private FlashLogger()
         {
+            var configFile = new FileInfo(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "log4net.config"));
+            if (!configFile.Exists)
+            {
+                throw new Exception("未配置log4net配置文件！");
+            }
+
             // 设置日志配置文件路径
-            XmlConfigurator.Configure(new FileInfo(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "log4net.config")));
+            XmlConfigurator.Configure(configFile);
 
             _que = new ConcurrentQueue<FlashLogMessage>();
             _mre = new ManualResetEvent(false);
